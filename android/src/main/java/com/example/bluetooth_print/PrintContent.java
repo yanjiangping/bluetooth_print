@@ -57,7 +57,7 @@ public class PrintContent {
                         // 设置条码高度为60点
                         esc.addSetBarcodeHeight((byte) 80);
                         // 设置条码宽窄比为2
-                        esc.addSetBarcodeWidth((byte) 2);
+                        esc.addSetBarcodeWidth((byte) 4);
                         // 打印Code128码
                         esc.addCODE128(esc.genCodeB(content));
                   }else if("qrcode".equals(type)){
