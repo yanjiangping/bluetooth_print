@@ -36,8 +36,6 @@ public class PrintContent {
                   int height = (int)(m.get("height")==null?0:m.get("height"));
                   int underline = (int)(m.get("underline")==null?0:m.get("underline"));
                   int linefeed = (int)(m.get("linefeed")==null?0:m.get("linefeed"));
-                  double barcodeWidth = (double)(m.get("barcodeWidth")==null?0:m.get("barcodeWidth"));
-                  double barcodeHeight = (double)(m.get("barcodeHeight")==null?0:m.get("barcodeHeight"));
 
                   EscCommand.ENABLE emphasized = weight==0?EscCommand.ENABLE.OFF:EscCommand.ENABLE.ON;
                   EscCommand.ENABLE doublewidth = width==0?EscCommand.ENABLE.OFF:EscCommand.ENABLE.ON;
@@ -54,14 +52,8 @@ public class PrintContent {
                         // 取消倍高倍宽
                         esc.addSelectPrintModes(EscCommand.FONT.FONTA, EscCommand.ENABLE.OFF, EscCommand.ENABLE.OFF, EscCommand.ENABLE.OFF, EscCommand.ENABLE.OFF);
                   }else if("barcode".equals(type)){
-                        esc.addSelectPrintingPositionForHRICharacters(EscCommand.HRI_POSITION.BELOW);
-                        // 设置条码可识别字符位置在条码下方
-                        // 设置条码高度为60点
-                        esc.addSetBarcodeHeight((byte) barcodeHeight);
-                        // 设置条码宽窄比为2
-                        esc.addSetBarcodeWidth((byte) barcodeWidth);
-                        // 打印Code128码
-                        esc.addCODE128(esc.genCodeB(content));
+                        Bitmap bitmap = BitmapUtil.generateBitmap(content, 8, 400, height);
+                        esc.addRastBitImage(bitmap, 576, 0);
                   }else if("qrcode".equals(type)){
                         // 设置纠错等级
                         esc.addSelectErrorCorrectionLevelForQRCode((byte) 0x31);
