@@ -36,8 +36,8 @@ public class PrintContent {
                   int height = (int)(m.get("height")==null?0:m.get("height"));
                   int underline = (int)(m.get("underline")==null?0:m.get("underline"));
                   int linefeed = (int)(m.get("linefeed")==null?0:m.get("linefeed"));
-                  double barcodeWidth = (int)(m.get("barcodeWidth")==null?0:m.get("barcodeWidth"));
-                  double barcodeHeight = (int)(m.get("barcodeHeight")==null?0:m.get("barcodeHeight"));
+                  double barcodeWidth = (double)(m.get("barcodeWidth")==null?0:m.get("barcodeWidth"));
+                  double barcodeHeight = (double)(m.get("barcodeHeight")==null?0:m.get("barcodeHeight"));
 
                   EscCommand.ENABLE emphasized = weight==0?EscCommand.ENABLE.OFF:EscCommand.ENABLE.ON;
                   EscCommand.ENABLE doublewidth = width==0?EscCommand.ENABLE.OFF:EscCommand.ENABLE.ON;
