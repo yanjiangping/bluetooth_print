@@ -55,9 +55,9 @@ public class PrintContent {
                         esc.addSelectPrintingPositionForHRICharacters(EscCommand.HRI_POSITION.BELOW);
                         // 设置条码可识别字符位置在条码下方
                         // 设置条码高度为60点
-                        esc.addSetBarcodeHeight((byte) 80);
+                        esc.addSetBarcodeHeight((byte) height);
                         // 设置条码宽窄比为2
-                        esc.addSetBarcodeWidth((byte) 4);
+                        esc.addSetBarcodeWidth((byte) width);
                         // 打印Code128码
                         esc.addCODE128(esc.genCodeB(content));
                   }else if("qrcode".equals(type)){
