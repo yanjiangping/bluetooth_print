@@ -29,7 +29,9 @@ class LineText {
       this.underline = 0, //0,1
       this.linefeed = 0, //0,1
       this.x = 0,
-      this.y = 0});
+      this.y = 0,
+      this.barcodeWidth=2.5,
+      this.barcodeHeight=80});
 
   static const String TYPE_TEXT = 'text';
   static const String TYPE_BARCODE = 'barcode';
@@ -50,6 +52,8 @@ class LineText {
   final int linefeed;
   final int x;
   final int y;
+  final double barcodeWidth;
+  final double barcodeHeight;
 
   factory LineText.fromJson(Map<String, dynamic> json) =>
       _$LineTextFromJson(json);

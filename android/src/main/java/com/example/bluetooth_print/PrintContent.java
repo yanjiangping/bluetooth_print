@@ -36,6 +36,8 @@ public class PrintContent {
                   int height = (int)(m.get("height")==null?0:m.get("height"));
                   int underline = (int)(m.get("underline")==null?0:m.get("underline"));
                   int linefeed = (int)(m.get("linefeed")==null?0:m.get("linefeed"));
+                  double barcodeWidth = (int)(m.get("barcodeWidth")==null?0:m.get("barcodeWidth"));
+                  double barcodeHeight = (int)(m.get("barcodeHeight")==null?0:m.get("barcodeHeight"));
 
                   EscCommand.ENABLE emphasized = weight==0?EscCommand.ENABLE.OFF:EscCommand.ENABLE.ON;
                   EscCommand.ENABLE doublewidth = width==0?EscCommand.ENABLE.OFF:EscCommand.ENABLE.ON;
@@ -55,9 +57,9 @@ public class PrintContent {
                         esc.addSelectPrintingPositionForHRICharacters(EscCommand.HRI_POSITION.BELOW);
                         // 设置条码可识别字符位置在条码下方
                         // 设置条码高度为60点
-                        esc.addSetBarcodeHeight((byte) height);
+                        esc.addSetBarcodeHeight((byte) barcodeHeight);
                         // 设置条码宽窄比为2
-                        esc.addSetBarcodeWidth((byte) width);
+                        esc.addSetBarcodeWidth((byte) barcodeWidth);
                         // 打印Code128码
                         esc.addCODE128(esc.genCodeB(content));
                   }else if("qrcode".equals(type)){
