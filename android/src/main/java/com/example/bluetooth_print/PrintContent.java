@@ -87,7 +87,8 @@ public class PrintContent {
             byte [] bytes={0x1D,0x72,0x01};
             //添加用户指令
             esc.addUserCommand(bytes);
-
+            byte [] cutBytes = {0x1D, 0x56, 66, 0x00};
+            esc.addUserCommand(cutBytes);
             return esc.getCommand();
       }
 
